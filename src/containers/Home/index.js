@@ -61,6 +61,17 @@ const Home = ({ navigation }) => {
         }
         setFeedData(newFeed)
     }
+
+    const _renderFlatlistContent = ({ item }) => {
+        return (
+            <View style={styles.feedWrap} >
+                <TouchableOpacity onPress={() => _onPressFeed(item)}>
+                    <Image style={styles.feedImage} source={{ uri: item.media.m }} />
+                </TouchableOpacity>
+                <Icon onPress={() => _addToFavorite(item)} name="heart" style={[styles.favIcon, item.isFav && { color: ColorList.red }]} />
+            </View>
+        )
+    }
     return (
         <View style={styles.container}>
             <View style={styles.topHeader}>
@@ -87,16 +98,7 @@ const Home = ({ navigation }) => {
                     data={feedData}
                     onEndReached={_fetchMoreData}
                     onEndReachedThreshold={0.6}
-                    renderItem={({ item }) => {
-                        return (
-                            <View style={styles.feedWrap} >
-                                <TouchableOpacity onPress={() => _onPressFeed(item)}>
-                                    <Image style={styles.feedImage} source={{ uri: item.media.m }} />
-                                </TouchableOpacity>
-                                <Icon onPress={() => _addToFavorite(item)} name="heart" style={[styles.favIcon, item.isFav && { color: ColorList.red }]} />
-                            </View>
-                        )
-                    }}
+                    renderItem={_renderFlatlistContent}
                     keyExtractor={(_, id) => id.toString()}
                 />
             </View>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Text from '../../components/Text'
-import { View, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
-import { Item, Input, Icon, Button } from 'native-base';
+import { View, FlatList, TouchableOpacity } from 'react-native'
+import { Icon } from 'native-base';
 import { styles } from './styles';
 import { toggleFavorite, getFavoriteInStorage } from '../../service/LocalService/FavoriteService';
 import { Image } from '../../components/Image';
@@ -27,9 +27,22 @@ const Favorite = ({ navigation }) => {
         navigation.push(Constant.FEED_DETAIL_ROUTE_NAME, { link: item.link })
     }
 
-    const _addToFavorite = async(item) => {
+    const _addToFavorite = async (item) => {
         const newFav = await toggleFavorite(item)
         setFavData(newFav)
+    }
+
+    const _renderFlatlistContent = ({ item }) => {
+        return (
+            <View style={styles.card} >
+                <TouchableOpacity onPress={() => _onPressFeed(item)}>
+                    <Image style={styles.feedImage} source={{ uri: item.media.m }} />
+                </TouchableOpacity>
+                <Icon onPress={() => _addToFavorite(item)} name="heart" style={[styles.favIcon, { color: ColorList.red }]} />
+                <Text>Title : {item.title}</Text>
+                <Text>Author: {item.author}</Text>
+            </View>
+        )
     }
     return (
         <View style={styles.container}>
@@ -37,18 +50,7 @@ const Favorite = ({ navigation }) => {
             <View style={{ flex: 1 }}>
                 <FlatList
                     data={favData}
-                    renderItem={({ item }) => {
-                        return (
-                            <View style={styles.card} >
-                                <TouchableOpacity onPress={() => _onPressFeed(item)}>
-                                    <Image style={styles.feedImage} source={{ uri: item.media.m }} />
-                                </TouchableOpacity>
-                                <Icon onPress={() => _addToFavorite(item)} name="heart" style={[styles.favIcon, { color: ColorList.red }]} />
-                                <Text>{item.title}</Text>
-                                <Text>{item.author}</Text>
-                            </View>
-                        )
-                    }}
+                    renderItem={_renderFlatlistContent}
                     keyExtractor={(_, id) => id.toString()}
                 />
             </View>
