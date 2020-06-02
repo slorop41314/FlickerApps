@@ -3,6 +3,7 @@ import React, { Component, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Image } from '../../components/Image'
 import { Constant } from '../../utils/constant'
+import Text from '../../components/Text'
 
 const Splash = ({ navigation }) => {
     useEffect(() => {
@@ -13,6 +14,7 @@ const Splash = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image style={styles.logo} source={require("../../assets/images/logo.png")} />
+            <Text>Share Your Photo</Text>
         </View>
     )
 }
