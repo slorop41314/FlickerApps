@@ -7,6 +7,7 @@ import { fetchFeedData } from '../../service/NetworkService/HomeNetworkService';
 import { toggleFavorite } from '../../service/LocalService/FavoriteService';
 import { Image } from '../../components/Image';
 import { ColorList } from '../../utils/color';
+import { Constant } from '../../utils/constant';
 
 const Home = ({ navigation }) => {
     let [feedData, setFeedData] = useState([])
@@ -60,12 +61,11 @@ const Home = ({ navigation }) => {
         }
         setFeedData(newFeed)
     }
-    // const _renderFlatlistData = 
     return (
         <View style={styles.container}>
             <View style={styles.topHeader}>
                 <Text font="title">Home</Text>
-                <Icon name="heart" style={{ color: ColorList.red }} />
+                <Icon onPress={() => navigation.push(Constant.FAVORITE_ROUTE_NAME)} name="heart" style={{ color: ColorList.red }} />
             </View>
             <Header searchBar rounded style={styles.header}>
                 <Item>

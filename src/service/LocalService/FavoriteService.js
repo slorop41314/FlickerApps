@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 export const toggleFavorite = async (newItem) => {
     let favData = await getFavoriteInStorage()
@@ -7,15 +6,16 @@ export const toggleFavorite = async (newItem) => {
     }
     // Initialize new favorite
     let newFav = []
-    const dataSelected = favData.find(oldItem => oldItem == newItem)
+    const dataSelected = await favData.find(olditem => olditem.author_id == newItem.author_id)
     if (dataSelected) {
         // Removing the item passed from old favorite data 
-        favData.filter(oldItem => oldItem == newItem)
+        const x = await favData.filter(oldItem => oldItem.author_id != newItem.author_id)
+        newFav = x
     } else {
         // Add the item passed to new favorite data 
-        favData.push(newItem)
+        await favData.push(newItem)
+        newFav = favData
     }
-    newFav = favData
     // Set new favorite data to asyncstorage
     await AsyncStorage.setItem("favoriteData", JSON.stringify(newFav))
     // Returning newData to who call the function
