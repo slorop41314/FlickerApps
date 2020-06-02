@@ -39,6 +39,10 @@
 		62A0C1B53279448BB1B0D7BA /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5875090F5D5D476E92931ACD /* rubicon-icon-font.ttf */; };
 		EED3566BD75D43E3B1297F9F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 009D5D31A028474D94894EDC /* SimpleLineIcons.ttf */; };
 		B8EB8841EB8B4627981BB1AB /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23DE465955A414B921682A8 /* Zocial.ttf */; };
+		D0E55F6423B94C2CB56E8CE9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A253FDBA614CE39484F8D7 /* logo.png */; };
+		860E926842C542EBB5250C9F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E09E8339C15F4D88A53DAEAD /* OpenSans-Bold.ttf */; };
+		2404B8921D9546B3AE79C4CD /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2E43A820FB4C4482C3DBF7 /* OpenSans-Regular.ttf */; };
+		1F9014FB6FC04C88B199E804 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8AB5EE747D548D7A7A5EAD8 /* OpenSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,10 @@
 		5875090F5D5D476E92931ACD /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		009D5D31A028474D94894EDC /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		A23DE465955A414B921682A8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F1A253FDBA614CE39484F8D7 /* logo.png */ = {isa = PBXFileReference; name = "logo.png"; path = "../src/assets/images/logo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E09E8339C15F4D88A53DAEAD /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1A2E43A820FB4C4482C3DBF7 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E8AB5EE747D548D7A7A5EAD8 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../src/assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +267,10 @@
 				5875090F5D5D476E92931ACD /* rubicon-icon-font.ttf */,
 				009D5D31A028474D94894EDC /* SimpleLineIcons.ttf */,
 				A23DE465955A414B921682A8 /* Zocial.ttf */,
+				F1A253FDBA614CE39484F8D7 /* logo.png */,
+				E09E8339C15F4D88A53DAEAD /* OpenSans-Bold.ttf */,
+				1A2E43A820FB4C4482C3DBF7 /* OpenSans-Regular.ttf */,
+				E8AB5EE747D548D7A7A5EAD8 /* OpenSans-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -425,6 +437,10 @@
 				62A0C1B53279448BB1B0D7BA /* rubicon-icon-font.ttf in Resources */,
 				EED3566BD75D43E3B1297F9F /* SimpleLineIcons.ttf in Resources */,
 				B8EB8841EB8B4627981BB1AB /* Zocial.ttf in Resources */,
+				D0E55F6423B94C2CB56E8CE9 /* logo.png in Resources */,
+				860E926842C542EBB5250C9F /* OpenSans-Bold.ttf in Resources */,
+				2404B8921D9546B3AE79C4CD /* OpenSans-Regular.ttf in Resources */,
+				1F9014FB6FC04C88B199E804 /* OpenSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
