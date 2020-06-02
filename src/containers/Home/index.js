@@ -91,7 +91,6 @@ const Home = ({ navigation }) => {
                 </Item>
             </Header>
             <View style={{ flex: 1 }}>
-                {!search && <Text font="title">All</Text>}
                 <FlatList
                     refreshControl={<RefreshControl refreshing={false} onRefresh={() => _searchButtonPressed()} />}
                     numColumns={3}
