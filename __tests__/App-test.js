@@ -1,14 +1,22 @@
-/**
- * @format
- */
+import axios from 'axios';
+import { fetchFeedData } from '../src/service/NetworkService/HomeNetworkService';
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+jest.mock('axios');
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+describe('Fetch Feed Data', () => {
+  it('fetches successfully data from Flickr API', async () => {
+    const data = {
+      "title": "Uploads from everyone",
+      "link": "https:\/\/www.flickr.com\/photos\/",
+      "description": "",
+      "modified": "2020-06-02T16:14:47Z",
+      "generator": "https:\/\/www.flickr.com",
+      "items": []
+    }
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+    axios.get.mockImplementationOnce(() => Promise.resolve(data));
+
+    await expect(fetchFeedData("", 1)).resolves.toEqual(data);
+  });
+
 });
