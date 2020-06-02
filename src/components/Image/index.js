@@ -3,7 +3,7 @@ import { View, Image as RNImage, StyleSheet } from 'react-native'
 
 export const Image = (props) => {
     return (
-        <RNImage {...props} resizeMode="cover" />
+        <RNImage {...props} resizeMode="stretch" />
     )
 }
 

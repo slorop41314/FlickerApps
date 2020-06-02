@@ -79,6 +79,8 @@ target 'AIA_Test' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'AIA_TestTests' do
     inherit! :complete
     # Pods for testing

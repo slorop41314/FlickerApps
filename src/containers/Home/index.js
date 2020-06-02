@@ -1,12 +1,15 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Text from '../../components/Text'
-import { View, TextInput, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
+import { View, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
 import { Header, Item, Input, Icon, Button } from 'native-base';
 import { styles } from './styles';
 import { fetchFeedData } from '../../service/NetworkService/HomeNetworkService';
+import { toggleFavorite } from '../../service/LocalService/FavoriteService';
 import { Image } from '../../components/Image';
+import { ColorList } from '../../utils/color';
+
 const Home = ({ navigation }) => {
-    const [feedData, setFeedData] = useState([])
+    let [feedData, setFeedData] = useState([])
     const [search, setSearch] = useState("")
     let [pageNum, setPageNum] = useState(1)
     useEffect(() => {
@@ -45,8 +48,25 @@ const Home = ({ navigation }) => {
         // Get feed item for navigation param
         navigation.push("FeedDetail", { link: item.link })
     }
+
+    const _addToFavorite = (item) => {
+        toggleFavorite(item)
+        const newFeed = [...feedData]
+        const indexNum = newFeed.findIndex(oldData => oldData == item)
+        if (newFeed[indexNum].isFav) {
+            newFeed[indexNum].isFav = false
+        } else {
+            newFeed[indexNum].isFav = true
+        }
+        setFeedData(newFeed)
+    }
+    // const _renderFlatlistData = 
     return (
         <View style={styles.container}>
+            <View style={styles.topHeader}>
+                <Text font="title">Home</Text>
+                <Icon name="heart" style={{ color: ColorList.red }} />
+            </View>
             <Header searchBar rounded style={styles.header}>
                 <Item>
                     <Input
@@ -67,11 +87,16 @@ const Home = ({ navigation }) => {
                     data={feedData}
                     onEndReached={_fetchMoreData}
                     onEndReachedThreshold={0.6}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => _onPressFeed(item)} style={styles.feedWrap} >
-                            <Image style={styles.feedImage} source={{ uri: item.media.m }} />
-                        </TouchableOpacity>
-                    )}
+                    renderItem={({ item }) => {
+                        return (
+                            <View style={styles.feedWrap} >
+                                <TouchableOpacity onPress={() => _onPressFeed(item)}>
+                                    <Image style={styles.feedImage} source={{ uri: item.media.m }} />
+                                </TouchableOpacity>
+                                <Icon onPress={() => _addToFavorite(item)} name="heart" style={[styles.favIcon, item.isFav && { color: ColorList.red }]} />
+                            </View>
+                        )
+                    }}
                     keyExtractor={(_, id) => id.toString()}
                 />
             </View>
