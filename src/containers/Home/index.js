@@ -19,9 +19,9 @@ const Home = ({ navigation }) => {
 
     //Function for fetching data
     const _fetchData = async (num) => {
+        setPageNum(num + 1)
         const res = await fetchFeedData(search, num)
         if (res.status == 200) {
-            setPageNum(pageNum++)
             let data = []
             if (num == 1) {
                 data = res.data.items
@@ -40,8 +40,7 @@ const Home = ({ navigation }) => {
 
     //Function called when flatlist reach the treshold
     const _fetchMoreData = () => {
-        const nextPage = pageNum++
-        _fetchData(nextPage)
+        _fetchData(pageNum)
     }
 
     //Function called when user pressed the card
