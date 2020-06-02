@@ -1,11 +1,11 @@
 import React, { Component, useState, useEffect } from 'react'
-import { Text } from '../../components/Text'
+import Text from '../../components/Text'
 import { View, TextInput, FlatList, TouchableOpacity } from 'react-native'
 import { Header, Item, Input, Icon, Button } from 'native-base';
 import { styles } from './styles';
 import { fetchFeedData } from '../../service/NetworkService/HomeNetworkService';
 import { Image } from '../../components/Image';
-const Home = () => {
+const Home = ({ navigation }) => {
     const [feedData, setFeedData] = useState([])
     const [search, setSearch] = useState("")
     let [pageNum, setPageNum] = useState(1)
@@ -39,6 +39,12 @@ const Home = () => {
         const nextPage = pageNum++
         _fetchData(nextPage)
     }
+
+    //Function called when user pressed the card
+    const _onPressFeed = (item) => {
+        // Get feed item for navigation param
+        navigation.push("FeedDetail", { link: item.link })
+    }
     return (
         <View style={styles.container}>
             <Header searchBar rounded style={styles.header}>
@@ -61,7 +67,7 @@ const Home = () => {
                     onEndReached={_fetchMoreData}
                     onEndReachedThreshold={0.5}
                     renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.feedWrap} >
+                        <TouchableOpacity onPress={() => _onPressFeed(item)} style={styles.feedWrap} >
                             <Image style={styles.feedImage} source={{ uri: item.media.m }} />
                         </TouchableOpacity>
                     )}
