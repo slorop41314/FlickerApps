@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react'
 import Text from '../../components/Text'
-import { View, TextInput, FlatList, TouchableOpacity } from 'react-native'
+import { View, TextInput, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
 import { Header, Item, Input, Icon, Button } from 'native-base';
 import { styles } from './styles';
 import { fetchFeedData } from '../../service/NetworkService/HomeNetworkService';
@@ -62,10 +62,11 @@ const Home = ({ navigation }) => {
             <View style={{ flex: 1 }}>
                 {!search && <Text font="title">All</Text>}
                 <FlatList
+                    refreshControl={<RefreshControl refreshing={false} onRefresh={() => _searchButtonPressed()} />}
                     numColumns={3}
                     data={feedData}
                     onEndReached={_fetchMoreData}
-                    onEndReachedThreshold={0.5}
+                    onEndReachedThreshold={0.6}
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => _onPressFeed(item)} style={styles.feedWrap} >
                             <Image style={styles.feedImage} source={{ uri: item.media.m }} />
