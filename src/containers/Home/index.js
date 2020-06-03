@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Text from '../../components/Text'
-import { View, FlatList, TouchableOpacity, RefreshControl } from 'react-native'
+import { View, FlatList, TouchableOpacity, RefreshControl, SafeAreaView } from 'react-native'
 import { Header, Item, Input, Icon, Button } from 'native-base';
 import { styles } from './styles';
 import { fetchFeedData } from '../../service/NetworkService/HomeNetworkService';
@@ -72,7 +72,7 @@ const Home = ({ navigation }) => {
         )
     }
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.topHeader}>
                 <Text font="title">Home</Text>
                 <Icon onPress={() => navigation.push(Constant.FAVORITE_ROUTE_NAME)} name="heart" style={{ color: ColorList.red }} />
@@ -100,7 +100,7 @@ const Home = ({ navigation }) => {
                     keyExtractor={(_, id) => id.toString()}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
